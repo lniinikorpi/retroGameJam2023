@@ -8,23 +8,27 @@
 IMPORT_TILES(font);
 IMPORT_MAP(credit);
 
-UINT16 timer;
+UINT16 timer_cookie;
 BOOLEAN spawned;
 
 void START() {
 	UINT8 collision_tiles[] = { 1, 0 };
 	InitScroll(BANK(credit), &credit, collision_tiles, 0);
 	spawned = FALSE;
-	timer = 0;
+	timer_cookie = 0;
 }
 
 void UPDATE() {
 	if (KEY_PRESSED(J_START)) {
 		SetState(StateIntro);
 	}
-	timer++;
-	if (timer > 600 && !spawned) {
+	if (timer_cookie >= 300) {
+		if (spawned) {
+			return;
+		}
 		spawned = TRUE;
 		SpriteManagerAdd(SpriteCookie, -20, 100);
 	}
+	timer_cookie++;
+
 }

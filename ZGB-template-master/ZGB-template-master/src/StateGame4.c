@@ -6,7 +6,6 @@
 #include "Print.h"
 
 #include "Music.h"
-DECLARE_MUSIC(Unknown_Caverns);
 IMPORT_TILES(font);
 IMPORT_MAP(map5);
 
@@ -17,7 +16,6 @@ void START() {
 	InitScroll(BANK(map5), &map5, collision_tiles, 0);
 	//INIT_CONSOLE(font, 3);
 	//
-	PlayMusic(Unknown_Caverns, 1);
 }
 
 void UPDATE() {
